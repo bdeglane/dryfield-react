@@ -1,6 +1,7 @@
 /dist/style/*
 /dist/static/*
 .idea/*
+/app/main.js.old
 
 ### Windows template
 # Windows image file caches
