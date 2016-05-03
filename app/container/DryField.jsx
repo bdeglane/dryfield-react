@@ -17,6 +17,7 @@ export default class DryField extends React.Component {
 					id={ id }
 					water={ item.water }
 					harvest={ item.harvest }
+					maturity={ item.maturity }
 					onRecolter={ this.props.onRecolter }
 					onIrriguer={ this.props.onIrriguer }
 				/>
