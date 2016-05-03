@@ -2,51 +2,55 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {createStore} from '../core/Store.js';
+import Action from '../container/Action.js';
 import DryField from '../container/DryField.jsx';
 
 
 export default class Game {
+
     constructor() {
         this.timer = null;
         this.dump = 1;
-        this.store = createStore(Game.reducer);
+        this.store = createStore(this.reducer);
     }
 
     init() {
         this.store.subscribe(()=> this.render());
+        this.frame();
     }
 
-    static reducer(state = {
+    reducer(state = {
         score: 0,
         waterTank: 100,
         fields: [
             {
                 water: 100,
-                harvest: 10
+                harvest: 0,
+                mature: false
             }, {
                 water: 100,
-                harvest: 10
+                harvest: 0,
+                mature: false
             }, {
                 water: 100,
-                harvest: 10
+                harvest: 0,
+                mature: false
             },
         ]
     }, action, params) {
         switch (action.type) {
             case 'IRRIGUER':
-                //return state + 1;
-                console.log('call action IRRIGUER');
-                return Game.water(state, params);
+                return Action.water(state, params);
                 break;
             case 'RECOLTER':
-                //return state + 1;
-                console.log('call action RECOLTER');
-                return Game.harvest(state, params);
+                return Action.harvest(state, params);
                 break;
             case 'BUY_WATER':
                 //return state + 1;
-                console.log('call action BUY_WATER');
                 return state;
+                break;
+            case 'GROW':
+                return Action.grow(state);
                 break;
             default:
                 console.log('call unnkown action current state return');
@@ -55,20 +59,21 @@ export default class Game {
         }
     }
 
-    static water(state, id) {
-        state.fields[id].water += 10;
-        console.log(state, id);
-        return state;
-    }
+    frame() {
+        this.timer = setInterval(()=> {
+            this.store.dispatch({type: 'GROW'})
+        }, 1000);
 
-    static harvest(state, id) {
-        state.fields[id].harvest = 0;
-        console.log(state, id);
-        return state;
+        // run for only 15 sec
+        setTimeout(()=> {
+            clearInterval(this.timer);
+            this.timer = null;
+        }, 15000);
+
     }
 
     render() {
-        console.log(this, this.store.getState());
+        console.log(this.store.getState());
         ReactDOM.render(
             <DryField
                 state={ this.store.getState() }
