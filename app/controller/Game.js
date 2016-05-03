@@ -26,15 +26,15 @@ export default class Game {
             {
                 water: 100,
                 harvest: 0,
-                mature: false
+                maturity: false
             }, {
                 water: 100,
                 harvest: 0,
-                mature: false
+                maturity: false
             }, {
                 water: 100,
                 harvest: 0,
-                mature: false
+                maturity: false
             },
         ]
     }, action, params) {
