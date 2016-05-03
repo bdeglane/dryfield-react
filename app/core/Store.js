@@ -4,40 +4,41 @@
  * @returns {{getState: getState, dispatch: dispatch, subscribe: subscribe}}
  */
 export const createStore = (reducer) => {
-	let state;
-	let listeners = [];
+    let state;
+    let listeners = [];
 
-	/**
-	 * @returns {state}
-	 */
-	const getState = () => state;
+    /**
+     * @returns {state}
+     */
+    const getState = () => state;
 
-	/**
-	 *
-	 * @param action
-	 */
-	const dispatch = (action) => {
-		state = reducer(state, action);
-		listeners.forEach(listener => listener());
-	};
+    /**
+     *
+     * @param action
+     * @param params
+     */
+    const dispatch = (action, params) => {
+        state = reducer(state, action, params);
+        listeners.forEach(listener => listener());
+    };
 
-	/**
-	 *
-	 * @param listener
-	 * @returns {Function}
-	 */
-	const subscribe = (listener)=> {
-		listeners.push(listener);
-		return ()=> {
-			listeners = listeners.filter(l => l !== listener);
-		}
-	};
+    /**
+     *
+     * @param listener
+     * @returns {Function}
+     */
+    const subscribe = (listener)=> {
+        listeners.push(listener);
+        return ()=> {
+            listeners = listeners.filter(l => l !== listener);
+        }
+    };
 
-	/**
-	 * first render
-	 */
-	dispatch({});
+    /**
+     * first render
+     */
+    dispatch({});
 
-	return {getState, dispatch, subscribe};
+    return {getState, dispatch, subscribe};
 
 };
