@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {createStore} from '../core/Store.js';
+// import {createStore} from '../core/_store.js';
+
+import Store from '../core/Store.js';
+
 import Action from '../container/Action.js';
 import DryField from '../container/DryField.jsx';
 
@@ -11,33 +14,22 @@ export default class Game {
     constructor() {
         this.timer = null;
         this.dump = 1;
-        this.store = createStore(this.reducer);
+        this.store = new Store(this.reducer);
     }
 
     init() {
         this.store.subscribe(()=> this.render());
-        this.frame();
+        // this.frame();
     }
 
-    reducer(state = {
-        score: 0,
-        waterTank: 100,
-        fields: [
-            {
-                water: 100,
-                harvest: 0,
-                mature: false
-            }, {
-                water: 100,
-                harvest: 0,
-                mature: false
-            }, {
-                water: 100,
-                harvest: 0,
-                mature: false
-            },
-        ]
-    }, action, params) {
+    /**
+     *
+     * @param state
+     * @param action
+     * @param params
+     * @returns {*}
+     */
+    reducer(state, action, params) {
         switch (action.type) {
             case 'IRRIGUER':
                 return Action.water(state, params);
@@ -53,7 +45,7 @@ export default class Game {
                 return Action.grow(state);
                 break;
             default:
-                console.log('call unnkown action current state return');
+                console.log('call unkown action current state return');
                 return state;
                 break;
         }
