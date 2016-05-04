@@ -10,7 +10,7 @@ export default class Store {
         // initial state of the application
         // need immutability
         this.state = {
-            score: 0,
+            score: 2,
             waterTank: 100,
             fields: [
                 {

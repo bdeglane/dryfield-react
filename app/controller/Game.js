@@ -32,14 +32,13 @@ export default class Game {
     reducer(state, action, params) {
         switch (action.type) {
             case 'IRRIGUER':
-                return Action.water(state, params);
+                return Action.irriguer(state, params);
                 break;
             case 'RECOLTER':
-                return Action.harvest(state, params);
+                return Action.recolter(state, params);
                 break;
             case 'BUY_WATER':
-                //return state + 1;
-                return state;
+                return Action.buyWater(state);
                 break;
             case 'GROW':
                 return Action.grow(state);
