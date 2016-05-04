@@ -26,15 +26,18 @@ export default class Game {
             {
                 water: 100,
                 harvest: 0,
-                maturity: false
+                maturity: false,
+                timer: 4
             }, {
                 water: 100,
                 harvest: 0,
-                maturity: false
+                maturity: false,
+                timer: 4
             }, {
                 water: 100,
                 harvest: 0,
-                maturity: false
+                maturity: false,
+                timer: 4
             },
         ]
     }, action, params) {
@@ -69,7 +72,6 @@ export default class Game {
             clearInterval(this.timer);
             this.timer = null;
         }, 15000);
-
     }
 
     render() {
