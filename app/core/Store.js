@@ -61,9 +61,17 @@ export default class Store {
      * @param listener
      */
     subscribe(listener) {
-        this.listeners.push(listener);
-        return ()=> {
-            this.listeners = this.listeners.filter(l => l !== listener);
-        }
+        if (this.listeners.indexOf(listener) == -1)
+            this.listeners.push(listener);
+    }
+
+    /**
+     *
+     * @param listener
+     */
+    unsubscribe(listener) {
+        let index = this.listeners.indexOf(listener);
+        if (index !== -1)
+            this.listeners.splice(index, 1);
     }
 }
