@@ -26,6 +26,14 @@ export default class Field extends React.Component {
 		}
 	}
 
+	enabledButton(maturity) {
+		if (maturity) {
+			return '';
+		} else {
+			return 'disabled';
+		}
+	}
+
 	render() {
 		return (
 			<div id={ 'field-' + this.props.id } className="col-sm-4 field">
@@ -41,7 +49,10 @@ export default class Field extends React.Component {
 										<ButtonWater onClick={ ()=> this.irriguer()  } id={ this.props.id }/>
 									</div>
 									<div className="btn-group" role="group">
-										<ButtonHarvest onClick={ ()=> this.recolter() } id={ this.props.id }/>
+										<ButtonHarvest
+											onClick={ ()=> this.recolter() }
+											id={ this.props.id }
+											enable={ this.enabledButton(this.props.maturity) }/>
 									</div>
 								</div>
 								<Progress value={ this.props.water } type="info"/>
