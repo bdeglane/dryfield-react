@@ -1,0 +1,28 @@
+{
+  "score": 2,
+  "waterTank": 100,
+  "fields": [
+    {
+      "water": 100,
+      "harvest": 0,
+      "maturity": false,
+      "timer": 4,
+      "increment": 10
+    },
+    {
+      "water": 100,
+      "harvest": 0,
+      "maturity": false,
+      "timer": 4,
+      "increment": 10
+    },
+    {
+      "water": 100,
+      "harvest": 0,
+      "maturity": false,
+      "timer": 4,
+      "increment": 10
+    }
+  ],
+  "game": true
+}
