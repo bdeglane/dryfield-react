@@ -18,7 +18,7 @@ module.exports = {
             '.js',
             '.json',
             '.css',
-            'jsonp'
+            '.jsonp'
         ]
     },
     module: {
@@ -43,6 +43,10 @@ module.exports = {
             {
                 test: /\.(jpe?g|png|gif)$/i,
                 loader: 'url?limit=10000!img?progressive=true'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json'
             }
         ]
     },
