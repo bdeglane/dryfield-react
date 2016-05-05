@@ -1,8 +1,6 @@
 import React from 'react';
 import './field.scss';
 
-import {irriguerAction, recolterAction} from '../../action/action.js';
-
 import ButtonWater from './ButtonWater.jsx';
 import ButtonHarvest from './ButtonHarvest.jsx';
 import Progress from './Progress.jsx';
