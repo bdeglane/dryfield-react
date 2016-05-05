@@ -1,4 +1,7 @@
 'use strict';
+
+import { ceil } from 'lodash';
+
 export default class Action {
 	/**
 	 *
@@ -85,7 +88,7 @@ export default class Action {
 					state.fields[field].water > 0 &&
 					state.fields[field].harvest < 100
 				) {
-					state.fields[field].water = Math.round((state.fields[field].water - state.fields[field].increment) * 100) / 100;
+					state.fields[field].water = ceil((state.fields[field].water - state.fields[field].increment), 2);
 					state.fields[field].harvest += 10;
 				}
 

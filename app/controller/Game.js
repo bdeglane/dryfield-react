@@ -9,7 +9,6 @@ export default class Game {
 
 	constructor() {
 		this.timer = null;
-		this.dump = 1;
 		this.store = new Store(Action.reducer);
 	}
 
