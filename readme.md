@@ -10,3 +10,7 @@ Le pattern redux repose sur trois principes fondamentals.
  3. les changements d'états se font par l'intermédiaire de fonctions pure
 
 ![class](/doc/schema/dryfield-react.png)
+
+## Démo
+
+https://bdeglane.github.io/dryfield-react/
